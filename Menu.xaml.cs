@@ -34,5 +34,15 @@ namespace Milionar
         {
             frame.Navigate(new Hra(frame));
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            frame.Navigate(new Highscore(frame));
+        }
     }
 }

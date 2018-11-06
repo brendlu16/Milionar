@@ -22,7 +22,31 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <TextBlock Name="OtazkaZadani" Grid.Column="0" Grid.Row="0" Text="Hello" Style="{StaticResource MaterialDesignDisplay1TextBlock}"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Click="Button_Click" Content="Zpět" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBlock Name="OtazkaZadani" Grid.Column="1" Grid.Row="0" Text="Hello" Style="{StaticResource MaterialDesignDisplay1TextBlock}"/>
+            <StackPanel Grid.Column="2">
+                <Label Name="LabelUroven15" Content="10 000 000" FontSize="12" Background="LightBlue" HorizontalContentAlignment="Center"></Label>
+                <Label Name="LabelUroven14" Content="5 000 000" FontSize="12" HorizontalContentAlignment="Center"></Label>
+                <Label Name="LabelUroven13" Content="2 500 000" FontSize="12" HorizontalContentAlignment="Center"></Label>
+                <Label Name="LabelUroven12" Content="1 250 000" FontSize="12" HorizontalContentAlignment="Center"></Label>
+                <Label Name="LabelUroven11" Content="640 000" FontSize="12" HorizontalContentAlignment="Center"></Label>
+                <Label Name="LabelUroven10" Content="320 000" FontSize="12" Background="LightBlue" HorizontalContentAlignment="Center"></Label>
+                <Label Name="LabelUroven9" Content="160 000" FontSize="12" HorizontalContentAlignment="Center"></Label>
+                <Label Name="LabelUroven8" Content="80 000" FontSize="12" HorizontalContentAlignment="Center"></Label>
+                <Label Name="LabelUroven7" Content="40 000" FontSize="12" HorizontalContentAlignment="Center"></Label>
+                <Label Name="LabelUroven6" Content="20 000" FontSize="12" HorizontalContentAlignment="Center"></Label>
+                <Label Name="LabelUroven5" Content="10 000" FontSize="12" Background="LightBlue" HorizontalContentAlignment="Center"></Label>
+                <Label Name="LabelUroven4" Content="5 000" FontSize="12" HorizontalContentAlignment="Center"></Label>
+                <Label Name="LabelUroven3" Content="3 000" FontSize="12" HorizontalContentAlignment="Center"></Label>
+                <Label Name="LabelUroven2" Content="2 000" FontSize="12" HorizontalContentAlignment="Center"></Label>
+                <Label Name="LabelUroven1" Content="1 000" FontSize="12" HorizontalContentAlignment="Center"></Label>
+                <Button Click="Button_Click_1" Content="Ukončit hru" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>

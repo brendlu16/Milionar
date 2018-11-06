@@ -28,6 +28,7 @@ namespace Milionar
         private int cislootazky = 1;
         private Button spravnaodpoved;
         private DispatcherTimer DTimer = new DispatcherTimer();
+        private int zachytnybod = 0;
         public Hra()
         {
             InitializeComponent();
@@ -65,34 +66,84 @@ namespace Milionar
                 }
             }
             Buttons_IsEnabled(true);
+            Label LabelUroven = (Label)this.FindName("LabelUroven"+cislootazky);
+            LabelUroven.FontWeight = FontWeights.UltraBold;
         }
         private void OdpovedKlik(object sender, RoutedEventArgs e)
         {
             Button batn = (Button)sender;
             Buttons_IsEnabled(false);
+            bool spravne;
             if (sender == spravnaodpoved)
             {
+                spravne = true;
                 OtazkaZadani.Text = "spravne";
+                Label LabelUroven = (Label)this.FindName("LabelUroven" + cislootazky);
+                LabelUroven.FontWeight = FontWeights.Normal;
+                if (cislootazky % 5 == 0)
+                {
+                    LabelUroven.Background = Brushes.Green;
+                }
+                else
+                {
+                    LabelUroven.Background = Brushes.Yellow;
+                }
+                cislootazky++;
             }
             else
             {
+                spravne = false;
                 OtazkaZadani.Text = "spatne";
                 batn.Background = Brushes.Red;
                 batn.BorderBrush = Brushes.Red;
+                Label LabelUroven = (Label)this.FindName("LabelUroven" + cislootazky);
+                LabelUroven.Background = Brushes.Red;
             }
-            cislootazky++;
             spravnaodpoved.Background = Brushes.LimeGreen;
             spravnaodpoved.BorderBrush = Brushes.LimeGreen;
             DTimer.Interval = TimeSpan.FromMilliseconds(3000);
-            DTimer.Tick += (s, args) => TimerNacteniOtazky();
+            DTimer.Tick += (s, args) => TimerNacteniOtazky(batn, spravne);
             DTimer.Start();
         }
-        private void TimerNacteniOtazky()
+        private void TimerNacteniOtazky(Button batn, bool spravne)
         {
             spravnaodpoved.Background = (Brush)new BrushConverter().ConvertFrom("#FF673AB7");
             spravnaodpoved.BorderBrush = (Brush)new BrushConverter().ConvertFrom("#FF673AB7");
-            NacistOtazku(cislootazky);
+            batn.BorderBrush = (Brush)new BrushConverter().ConvertFrom("#FF673AB7");
+            batn.Background = (Brush)new BrushConverter().ConvertFrom("#FF673AB7");
             DTimer.Stop();
+            if (spravne)
+            {
+                if (cislootazky > 15)
+                {
+                    Prohra(15);
+                } else
+                {
+                    NacistOtazku(cislootazky);
+                }
+            }
+            else
+            {
+                if (cislootazky > 5)
+                {
+                    zachytnybod = 5;
+                    if (cislootazky > 10)
+                    {
+                        zachytnybod = 10;
+                    }
+                }
+                Prohra(zachytnybod);
+            }
+        }
+        private void Prohra(int cislootazky)
+        {
+            if (cislootazky == 0)
+            {
+                frame.Navigate(new Menu(frame));
+            } else
+            {
+                frame.Navigate(new UlozeniHS(frame, cislootazky));
+            }
         }
         private void Buttons_IsEnabled(bool enabled)
         {
@@ -100,6 +151,16 @@ namespace Milionar
             Odpoved2.IsEnabled = enabled;
             Odpoved3.IsEnabled = enabled;
             Odpoved4.IsEnabled = enabled;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            frame.Navigate(new Menu(frame));
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Prohra(cislootazky-1);
         }
     }
 }
