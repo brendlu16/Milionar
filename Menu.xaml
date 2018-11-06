@@ -38,7 +38,6 @@
         <Button Content="Button" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="2" VerticalAlignment="Center" Height="60"/>
         <Button Content="Button" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="3" VerticalAlignment="Center" Height="60"/>
         <Button Content="Button" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="4" VerticalAlignment="Center" Height="60"/>
-        <Button Content="Button" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="5" VerticalAlignment="Center" Height="60"/>
 
     </Grid>
 </Page>
